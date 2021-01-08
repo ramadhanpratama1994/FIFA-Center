@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Center</title>
+    <!-- File CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type=>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loader">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">FIFA CENTER</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="teams.html">Teams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="matches.html">Matches</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <!-- Jumbotron -->
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Welcome to FIFA CENTER!</h1>
+                <p class="lead">Tempat berisi informasi terkini tentang FIFA WORLD CUP</p>
+            </div>
+        </div>
+
+        <!-- Competition -->
+        <div class="container" id="homeContent">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2>LASTEST COMPETITION</h2>
+                    <hr>
+                    <img src="assets/img/2000.png" alt="FIFA World Cup 2018" class="img-thumbnail">
+                    <ul>
+                        <li><span>Start : 2018-06-14</span></li>
+                        <li><span>End : 2018-07-15</span></li>
+                        <li><span>Winner : France</span></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <p>Click button below to see the detail about:</p>
+                    <a class="btn btn-dark btn-lg" href="teams.html" role="button">Teams</a>
+                    <a class="btn btn-dark btn-lg" href="matches.html" role="button">Matches</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h2>NEXT COMPETITION</h2>
+                    <p>Coming Soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark">
+        <p>Copyright &copy;2020 FIFA Center</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+
+    <!--cdn jQuery AJAX-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+    <script>
+        // menghilang animasi loader
+        $(document).ready(function () {
+            $(".loader").fadeOut();
+        })
+    </script>
+</body>
+
+</html>

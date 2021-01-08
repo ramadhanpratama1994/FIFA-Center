@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Center</title>
+    <!-- file CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- animasi loading -->
+    <div class="loader">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">FIFA CENTER</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="teams.html">Teams</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="matches.html">Matches <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Matches -->
+    <div class="container mt-5 text-left">
+        <section id="matchesContent">
+
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark mt-3 p-3 text-center d-block">
+        <p> Copyright &copy;2020 FIFA Center</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+
+    <!--cdn jQuery AJAX-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        // GET AJAX
+        $.ajax({
+            headers: {
+                'X-Auth-Token': '48fafcb9d13645f488cbb99b5ef048a1'
+            },
+            url: 'https://api.football-data.org/v2/competitions/2000/matches',
+            dataType: 'json',
+            type: 'GET',
+        }).done(function ({
+            matches
+        }) {
+            let htmlMatches = "";
+            matches.forEach(match => {
+                htmlMatches += `<table class="table" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th colspan="3">${match.utcDate} (UTC) - ${match.group}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-right" style="width: 15rem;">
+                            <div class="card d-inline-block mb-3 mx-2" style="width: 7rem;">
+                                <img src="assets/img/${match.homeTeam.name}.png" class="card-img-top"
+                                    alt="${match.homeTeam.name}">
+                                <div class="card-header text-center text-uppercase" style="font-size: 10px;">
+                                    ${match.homeTeam.name}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center align-middle" style="width: 5rem;">
+                            <h6>${match.score.fullTime.homeTeam} -
+                                ${match.score.fullTime.awayTeam}</h6>
+                        </td>
+                        <td class="text-left" style="width: 15rem;">
+                            <div class="card d-inline-block mb-3 mx-2" style="width: 7rem;">
+                                <img src="assets/img/${match.awayTeam.name}.png" class="card-img-top"
+                                    alt="${match.awayTeam.name}">
+                                <div class="card-header text-center text-uppercase" style="font-size: 10px;">
+                                    ${match.awayTeam.name}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>`
+            });
+            document.getElementById = (matchesContent).innerHTML = htmlMatches;
+        });
+
+        // Menghilangkan animasi loading
+        $(document).ready(function () {
+            $(".loader").fadeOut();
+        })
+    </script>
+</body>
+
+</html>
