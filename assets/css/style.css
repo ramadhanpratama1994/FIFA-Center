@@ -21,11 +21,11 @@ footer {
     padding: 20px;
 }
 
-#homeContent ul li {
+#homeCompetition ul li {
     list-style-type: none;
 }
 
-#homeContent img {
+#homeCompetition img {
     width: 180px;
     margin: 0 20px;
     float: left;

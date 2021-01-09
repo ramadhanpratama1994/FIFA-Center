@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
+<!-- animasi loader -->
+
 <body>
     <div class="loader">
         <div class="lds-facebook">
@@ -62,31 +64,8 @@
         </div>
 
         <!-- Competition -->
-        <div class="container" id="homeContent">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h2>LASTEST COMPETITION</h2>
-                    <hr>
-                    <img src="assets/img/2000.png" alt="FIFA World Cup 2018" class="img-thumbnail">
-                    <ul>
-                        <li><span>Start : 2018-06-14</span></li>
-                        <li><span>End : 2018-07-15</span></li>
-                        <li><span>Winner : France</span></li>
-                    </ul>
-                    <br>
-                    <br>
-                    <p>Click button below to see the detail about:</p>
-                    <a class="btn btn-dark btn-lg" href="teams.html" role="button">Teams</a>
-                    <a class="btn btn-dark btn-lg" href="matches.html" role="button">Matches</a>
-                </div>
-            </div>
+        <div class="container" id="homeCompetition">
 
-            <div class="card">
-                <div class="card-body">
-                    <h2>NEXT COMPETITION</h2>
-                    <p>Coming Soon!</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -109,7 +88,45 @@
         crossorigin="anonymous"></script>
 
     <script>
-        // menghilang animasi loader
+        // GET AJAX
+        $.ajax({
+            headers: {
+                'X-Auth-Token': '48fafcb9d13645f488cbb99b5ef048a1'
+            },
+            url: 'https://api.football-data.org/v2/competitions/2000',
+            dataType: 'json',
+            type: 'GET',
+        }).done(function (data) {
+            // do something with the response, e.g. isolate the id of a linked resource   
+            console.log(data);
+            let htmlCompetition = `<div class="card mb-3">
+                <div class="card-body">
+                    <h2>LASTEST COMPETITION</h2>
+                    <hr>
+                    <img src="assets/img/${data.id}.png" alt="FIFA World Cup 2018" class="img-thumbnail">
+                    <ul>
+                        <li><span>Start : ${data.currentSeason.startDate}</span></li>
+                        <li><span>End : ${data.currentSeason.endDate}</span></li>
+                        <li><span>Winner : ${data.currentSeason.winner.name}</span></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <p>Click button below to see the detail about:</p>
+                    <a class="btn btn-dark btn-lg" href="teams.html" role="button">Teams</a>
+                    <a class="btn btn-dark btn-lg" href="matches.html" role="button">Matches</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h2>NEXT COMPETITION</h2>
+                    <p>Coming Soon!</p>
+                </div>
+            </div>`
+            document.getElementById = (homeCompetition).innerHTML = htmlCompetition;
+        });
+
+        // menghilangkan animasi loader
         $(document).ready(function () {
             $(".loader").fadeOut();
         })
